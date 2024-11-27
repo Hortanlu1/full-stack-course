@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/styles/css/all.css">
+
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      .addToCartPhone {
+        @apply bg-[#BF1C18] w-full text-white text-center absolute duration-700 bottom-10 left-0 group-hover:bottom-[100px] p-2;
+      }
+
+      .addToCartLap {
+        @apply bg-[#BF1C18] w-full text-white text-center absolute bottom-10 left-0 group-hover:bottom-[105px] p-2 duration-700;
+      }
+
+      .addToCartAccessory {
+        @apply bg-[#BF1C18] w-full text-white text-center absolute bottom-16 left-0 group-hover:bottom-[100px] p-2 duration-700;
+      }
+      .compareItems {
+        @apply grid gap-y-2 absolute right-0 top-3 opacity-0 group-hover:opacity-100 group-hover:right-7 duration-700;
+      }
+
+       .compareItemsHover {
+        @apply border h-[40px] w-[40px] rounded-full bg-white
+        flex items-center justify-center hover:bg-[#f57963af] 
+      }
+
+      .logoSlider {
+        @apply max-md:h-[45px] md:h-[65px] object-cover flex-none cursor-pointer overflow-hidden;
+      }
+
+      .no-scrollbar::-webkit-scrollbar{
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .activeImage {
+          @apply opacity-100
+        }
+
+      .activeSlides {
+          @apply opacity-100
+        } 
+
+         @keyframes rotate {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }  
+
+          .rotate:hover{
+            animation: rotate 1s;
+          }
+
+          .select {
+            -webkit-appearance: none;
+          }
+
+          .footerInfo {
+            @apply max-lg:hidden hover:pl-4 hover:text-[#bb0000c9] text-[#79787E] text-start font-medium text-[15px] duration-500
+          }
+      </style>
+</head>
+<body class="bg-black">
+    <header class="bg-[#BB0000] flex flex-col">
+        <!-- First header section -->
+        <div class="flex  justify-between px-5 text-center md:px-[60px] lg:px-[90px] py-4">
+
+        <!-- First header section right -->
+        <div class="hidden lg:flex justify-between text-[14px]">
+            <a href="#" class="text-white "><i class="fa-solid fa-location-dot "></i> Find a store <span class="pl-[5px]">||</span></a>
+            <a href="#" class="text-white pl-[10px]">For Corporate purchase Email: corporatesales@slot.ng|| </a>
+        </div>
+
+       <!--  First header section left -->
+        <div class="text-[11px] md:text-[14px] text-white flex justify-evenly items-center">
+            <a href="#" class="border-r-[1px] px-3 lg:px-5">My Account</a>
+            <a href="#" class="border-r-[1px] px-3 lg:px-5" >My Wish List(0)</a>
+            <a href="#"class="border-r-[1px] px-3 lg:px-5" >Sign In</a>
+            <a href="#"class="px-3 lg:px-5" >Compare (0)</a>
+        </div>
+       </div>
+   
+       <!-- middle line -->
+        <div class="h-[1px] bg-[#D7504E]"></div>
+       <!-- Header Second Section -->
+        <div class="flex flex-col md:flex-row gap-2 lg:gap-10 py-[20px] px-[20px] md:px-[40px]  lg:px-[90px] relative">
+            <!-- Header Second Section Left -->
+            <img src="./assets/slot-images1/SLOT_LOGO_FF.png" alt="" class="w-[200px] h-[80px] md:w-[100px] md:h-[40px] lg:w-[200px]">
+
+            <div class="flex gap-[10px]"> 
+                <img src="./assets/slot-images1/slot-headphone-logo.png" alt="" class="max-lg:hidden bg-[#BB0000] h-[50px]">
+      
+            <span class="max-lg:hidden text-white">Hotline: 014663633 07005000050</span> 
+       
+           <div class="absolute right-[5%] top-[25%] md:hidden">
+            <a href="#"><img src="./assets/slot-images1/slot-bag-logo.png" alt=""></a>
+           </div>
+         </div>
+
+         <!-- Header Second Section Right -->
+          <div class="flex lg:items-center w-full lg:justify-center lg:pb-5">
+            <a href="#" class="md:hidden mt-4"><i class="fa-solid fa-bars text-white text-[25px]"></i></a>
+
+            <div class="flex w-full text-end lg:ml-[70px] lg:mr-[80px]">    
+          <input type="text" placeholder="Search entire store here..." class="text-xs font-semibold h-[50px] w-[75%] lg:w-[90%] max-md:ml-[40px]  px-[50px] rounded-l-full">
+          <button class="bg-[#880000] h-[51px] rounded-r-full text-[16px] text-white py-[5px] px-[15px] ml-[-5px] md:w-[150px] border-r-[1px] border-[#F5F5F5]">Search</button>
+          </div>
+          <div class="">
+          <a href="#" class="hidden md:inline"><img src="./assets/slot-images1/slot-bag-logo.png" alt=""></a>
+         </div>
+        </div>
+       </div>
+
+       <!-- Header third section -->
+       <div class="flex max-md:hidden border-t-[1px] border-t-[#D7504E] px-10">
+        <div class="flex gap-8 lg:pl-[50px] pr-[30px] border-r-[1px] border-r-[#D7504E] py-4">
+            <a href="#" class="max-sm:hidden"><i class="fa-solid fa-bars text-white text-[25px]"></i></a>
+            <p class="uppercase text-sm text-white font-bold max-lg:hidden">Shop By Categories
+            </p>
+        </div>
+        <div class="flex gap-5 pl-[30px] text-[11px] uppercase font-bold py-4">
+            <a href="#" class="text-white">Home</a>
+            <a href="#" class="text-white">About Us</a>
+            <a href="#" class="text-white">Contat Us</a>
+            <a href="#" class="text-white">Find A store</a>
+            <a href="#" class="text-white">Franchise</a>
+        </div>
+       </div>
+    </header>
+
+    <!-- Main Section -->
+     <main class=" px-5 py-10 lg:px-28">
+        <section class="">
+            <!-- Top Section -->
+             <!--First Section Mobile View -->
+             <div class="flex relative max-h-[350px] mb-44 md:hidden">
+              <!-- Firstt Slide -->
+             <div class="flex gap-[1px] max-h-[330px] activeSlides opacity-0 mb-10 absolute  slides">
+                <div class="h-[150px] w-[90%]">
+                <img src="./assets/slot-images1/slot-fridge.png" alt="" class="h-[100%] w-[100%]">
+            </div>
+                <div class="h-[150px] w-[90%]  ">
+                <img src="./assets/slot-images1/slot-itel.png" alt="" class="h-[100%] w-[100%]">
+             </div>
+             <div class="max- h-[150px] w-[90%] max-sm:hidden">
+                <img src="./assets/slot-images1/slot-mtn.jpg" alt="" class="h-[100%] w-[100%]">
+            </div>
+            <div class="max-lg:hidden xl:hidden h-[150px] w-[90%]  ">
+                <img src="./assets/slot-images1/slot-franchise.png" alt="" class="h-[100%] w-[100%]">
+            </div>
+             </div>
+            <!-- Second Slide -->
+             <div class="flex gap-[1px] opacity-0 max-h-[330px] mb-10 absolute  slides">
+                <div class="h-[150px] w-[90%]   ">
+                <img src="./assets/slot-images1/slot-franchise.png" alt="" class="h-[100%] w-[100%]">
+            </div>
+                <div class="h-[150px] w-[90%]">
+                <img src="./assets/slot-images1/slot-mtn.jpg" alt="" class="h-[100%] w-[100%]">
+             </div>
+             </div>
+            </div>
+
+             <!-- First Section tablet View -->
+                <!-- Left -->
+                 <!-- MD to LG -->
+                 <div class="h-[500px] w-[100%] mb-10 relative max-md:hidden lg:hidden">
+                    <img src="./assets/slot-images1/slot-fridge.png" alt="" class="h-[100%] w-[100%] absolute top-0 left-0">
+                    <img src="./assets/slot-images1/slot-franchise.png" alt="" class="h-[100%] w-[100%] absolute top-0 left-0">
+                    <img src="./assets/slot-images1/slot-mtn.jpg" alt="" class="h-[100%] w-[100%] absolute top-0 left-0">
+                    <img src="./assets/slot-images1/slot-itel.png" alt="" class="h-[100%] w-[100%] absolute top-0 left-0">
+                 </div>
+
+                 <div class="grid grid-cols-2 w-[100%] lg:hidden">
+                    <div class="h-[150px] md:h-[200px] w-[100%] bg-white p-[1px]">
+                        <img src="./assets/slot-images1/slot-hp-top.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+                    <div class="h-[150px] md:h-[200px] w-[100%] bg-white p-[1px]">
+                        <img src="./assets/slot-images1/slot-powerbank.jpg" alt="" class="h-[100%] w-[100%]">
+                    </div>
+                    <div class="h-[150px] md:h-[200px] w-[100%] bg-white p-[1px]">
+                        <img src="./assets/slot-images1/slot-hp-down.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+                    <div class="h-[150px] md:h-[200px] w-[100%] bg-white p-[1px]">
+                        <img src="./assets/slot-images1/slot-mifi.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+                  </div>
+                  
+            <!-- First Section Desktop View -->
+                  <div class="flex max-lg:hidden ">
+                 <div class=" h-[380px] w-[100%] mb-10 relative group">
+
+                    <div class="activeImage currentSlide opacity-0 h-[350px] w-[100%]bg-white p-[1px] absolute top-0 left-0 rounded-sm">
+                        <img src="./assets/slot-images1/slot-fridge.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+
+                    <div class="currentSlide opacity-0 h-[350px] w-[100%] bg-white p-[1px] absolute top-0 left-0 rounded-sm">
+                        <img src="./assets/slot-images1/slot-franchise.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+
+                    <div class="currentSlide opacity-0 h-[350px] w-[100%] bg-white p-[1px] absolute top-0 left-0 rounded-sm">
+                        <img src="./assets/slot-images1/slot-mtn.jpg" alt="" class="h-[100%] w-[100%]">
+                    </div>
+
+                    <div class="currentSlide opacity-0 h-[350px] w-[100%] bg-white p-[1px] absolute top-0 left-0 rounded-sm">
+                        <img src="./assets/slot-images1/slot-itel.png" alt="" class="h-[100%] w-[100%]">
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="grid mt-[30%] place-items-center text-black text-xl cursor-pointer opacity-0 group-hover:opacity-100 w-full">
+                      <i class="fas fa-angle-left prevBtn absolute left-0"></i>
+                        <i class="fas fa-angle-right nextBtn absolute right-0"></i>
+                    </div>
+                 </div>
+
+                 <!--Fitst Section Desktop Grid  -->
+              <div class="grid grid-cols-2 w-[90%] h-[350px]">
+                <div class="h-[175px] w-[100%] bg-white p-[1px]">
+                    <img src="./assets/slot-images1/slot-hp-top.png" alt="" class="h-[100%] w-[100%]">
+                </div>
+                <div class="h-[175px] w-[100%] bg-white p-[1px]">
+                    <img src="./assets/slot-images1/slot-powerbank.jpg" alt="" class="h-[100%] w-[100%]">
+                </div>
+                <div class="h-[175px] w-[100%] bg-white p-[1px]">
+                    <img src="./assets/slot-images1/slot-hp-down.png" alt="" class="h-[100%] w-[100%]">
+                </div>
+                <div class="h-[175px] w-[100%] bg-white p-[1px]">
+                    <img src="./assets/slot-images1/slot-mifi.png" alt="" class="h-[100%] w-[100%]">
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <!-- Second Section -->
+         <section class="md:grid md:grid-cols-2 lg:flex flex-wrap xl:flex-nowrap items-start justify-center md:gap-10 px-2 lg:gap-[40px] xl:gap-[6px] max-md:hidden bg-white border-t-[#919191] border py-6 md:mb-10">
+            <div class="flex gap-3">
+                <img src="./assets/slot-images2/delivery.png" alt="" class="rotate h-[40px]">
+              <div class="grid">
+                <p class="text-sm font-semibold">Flexible Payment</p>
+                <p class="text-xs">Conveniently Pay on Delivery</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+                <img src="./assets/slot-images2/payment.png" alt="" class="rotate h-[30px]">
+              <div class="grid">
+                <p class="text-sm font-semibold">Safe Payment</p>
+                <p class="text-xs">100% secure payment</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+                <img src="./assets/slot-images2/shop.png" alt="" class="rotate h-[40px]">
+              <div class="grid">
+                <p class="text-sm font-semibold">Shop With Confidence</p>
+                <p class="text-xs">Buy now pay later</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+                <img src="./assets/slot-images2/help.png" alt="" class="rotate h-[40px]">
+              <div class="grid">
+                <p class="text-sm font-semibold">24/7 Help Center</p>
+                <p class="text-xs">Dedicated online and offline support</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+                <img src="./assets/slot-images2/customer.png" alt="" class="rotate h-[30px]">
+              <div class="grid">
+                <p class="text-sm font-semibold">Friendly Customer Service</p>
+                <p class="text-xs">1-Year Warranty and 7-Day Return Policy</p>
+              </div>
+            </div>
+         </section>
+
+         <!-- Third Section -->
+          <section class="mb-10">
+            <!-- Mobile View -->
+            <div class="lg:flex justify-between flex-col xl:flex-row gap-5 bg-white border-t-[#919191] border px-5">
+            <p class="text-2xl text-wrap font-semibold">Mobile Phones and Tablets <span class="font-normal">Product</span> 
+            </p>
+            <div class="flex justify-between items-center text-[#BCBCBC] lg:gap-8 lg:items-end  lg:justify-end">
+              <p class="text-[#BF1C18] font-semibold">Tecno</p>
+              <p class="hover:text-[#BF1C18] font-semibold">Infinix</p>
+              <p class="hover:text-[#BF1C18] font-semibold">iPhone</p>
+              <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">SPORTY</p>
+              <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Samsung</p>
+              <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Oppo</p>
+              <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Nokia</p>
+              <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Huawei</p>
+
+            </div>
+          </div>
+
+          <!-- Market Place -->
+           <!-- Phone and accessories -->
+           <div class="flex px-2 py-6 bg-white mt-[-2px]">
+            <div class="h-[380px] w-[22%] relative group max-lg:hidden">
+              <img src="./assets/slot-images1/slot-smartphones.jpg" alt="" class="h-[100%] w-[100%]">
+            </div> 
+
+            <!-- inside border -->
+           <div class="border lg:w-[78%]">
+            <div class="flex gap-5">
+              <div class="h-[300px] w-[100%] relative group">
+                <img src="./assets/slot-images1/slot-pova-neo.png" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartPhone">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 hover:text-[#BF1C18] font-semibold">Tecno pova neo L16 8GB + 128GB</p>
+                  <p class="font-semibold">₦223,300.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦228,300.00</p>
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group">
+                <img src="./assets/slot-images1/slot-pova-neo.png" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartPhone">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 hover:text-[#BF1C18] font-semibold">Tecno pova neo L16 8GB + 128GB</p>
+                  <p class="font-semibold">₦223,300.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦228,300.00</p>
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group max-md:hidden">
+                <img src="./assets/slot-images1/slot-pova-neo.png" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartPhone">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 hover:text-[#BF1C18] font-semibold">Tecno pova neo L16 8GB + 128GB</p>
+                  <p class="font-semibold">₦223,300.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦228,300.00</p>
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group max-lg:hidden">
+                <img src="./assets/slot-images1/slot-pop8.png" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartPhone">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 hover:text-[#BF1C18] font-semibold">TECNO POP 8 2GB + 64GB</p>
+                  <p class="font-semibold">₦118,900.00</p>
+                   
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          </section>
+
+          <!-- Fourth Section Laptop & Computers-->
+           <section>
+            <div class="lg:flex justify-between flex-col xl:flex-row gap-5 bg-white px-5 py-5">
+              <p class="text-2xl text-wrap font-semibold">Laptops & Computers <span class="font-normal">Product</span> 
+              </p>
+              <div class="flex justify-between items-center text-[#BCBCBC] lg:gap-8 lg:items-end  lg:justify-end">
+                <p class="text-[#BF1C18] font-semibold">HP</p>
+                <p class="hover:text-[#BF1C18] font-semibold">Apple</p>
+                <p class="hover:text-[#BF1C18] font-semibold">ASUS</p>
+                <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Lenovo</p>
+                <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">DELL</p>
+                <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Microsoft</p>
+                <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Intel</p>
+                <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Desktops</p>
+              </div>
+            </div>
+
+            <!-- Border Part -->
+             <div class="flex bg-white p-3 ">
+             <div class="lg:h-[350px]  flex border lg:w-[78%] p-2">
+              <div class="h-[300px] w-[100%] relative group">
+                <img src="./assets/slot-images2/slot-hp-1.jpg" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartLap">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 text-sm hover:text-[#BF1C18] font-semibold">Hp Pavillion x360 Convertible 14-dy0093nia Laptop...</p>
+                  <p class="font-semibold">₦830,000.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦862,000.00</p> 
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group">
+                <img src="./assets/slot-images2/slot-hp-2.jpg" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartLap">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 text-sm hover:text-[#BF1C18] font-semibold">Hp Pavillion x360 Convertible 14-dy0093nia Laptop...</p>
+                  <p class="font-semibold">₦830,000.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦862,000.00</p> 
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group max-md:hidden">
+                <img src="./assets/slot-images2/slot-dell-1.jpg" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartLap">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 text-sm hover:text-[#BF1C18] font-semibold">Hp Pavillion x360 Convertible 14-dy0093nia Laptop...</p>
+                  <p class="font-semibold">₦830,000.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦862,000.00</p> 
+                </div>
+              </div>
+
+              <div class="h-[300px] w-[100%] relative group max-lg:hidden">
+                <img src="./assets/slot-images2/slot-dell-2.jpg" alt="" class="h-[65%] w-[100%]"> 
+                <p class="addToCartLap">Add to Cart</p>
+                <div class="compareItems">
+                  <i class="fa-regular fa-heart compareItemsHover"></i>
+                  <i class="fa-regular fa-eye compareItemsHover"></i>
+                  <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                </div>
+                <div class="grid pl-5 relative z-10 bg-white">
+                  <p class="text-blue-500 text-sm hover:text-[#BF1C18] font-semibold">Hp Pavillion x360 Convertible 14-dy0093nia Laptop...</p>
+                  <p class="font-semibold">₦830,000.00</p>
+                  <p class="text-sm text-[#BCBCBC] line-through">₦862,000.00</p> 
+                </div>
+              </div>
+
+             </div>
+             <div class="h-[380px] w-[22%] relative group max-lg:hidden">
+              <img src="./assets/slot-images2/slot-computing.jpg" alt="" class="h-[100%] w-[100%]"> 
+            </div>
+            </div>
+           </section>
+
+           <!-- FIFTH SECTION Cards-->
+            <section class="flex gap-6 w-[100%] pt-10 mb-10">
+              <div class="max-h-[300px] w-[100%]">
+                <img src="./assets/slot-images2/slot-card-1.jpeg" alt="" class="h-full w-[100%]">
+              </div>
+              
+              <div class="max-h-[300px] w-[100%] max-lg:hidden">
+                <img src="./assets/slot-images2/slot-card-2.jpeg" alt="" class="h-full w-[100%]">
+              </div>
+              
+              <div class="max-h-[300px] w-[100%] max-lg:hidden">
+                <img src="./assets/slot-images2/slot-card-3.jpeg" alt="" class="h-full w-[100%]">
+              </div>
+            </section>
+
+            <!-- Section Six Electronics-->
+             <section class="mb-10">
+              <div class="lg:flex justify-between flex-col gap-5 bg-white px-5 py-5">
+                <p class="text-2xl font-semibold">Electronics  <span class="font-normal">Product</span> 
+                </p>
+                <div class="flex justify-between items-center text-[#BCBCBC] ">
+                  <p class="text-[#BF1C18] font-semibold">Televisions</p>
+                  <p class="hover:text-[#BF1C18] font-semibold">Home & Audio</p>
+                  <p class="hover:text-[#BF1C18] font-semibold">Fryers</p>
+                  <p class="hover:text-[#BF1C18] font-semibold max-sm:hidden">Hair Grooming</p>
+                </div>
+              </div>
+
+              <div class="bg-white p-3 flex">
+                <div class="max-xl:hidden w-[25%]">
+                  <img src="./assets/slot-images2/slot-electronics.jpg" alt="">
+                </div>
+                <div class="border border-[#BCBCBC] rounded-sm h-8 md:h-10 w-full xl:w-[75%]"> </div>
+                
+              </div>
+             </section>
+
+             <!-- Section 7 Accessories-->
+              <section class="bg-white py-4 mb-10">
+                <div class="lg:flex justify-between flex-col gap-5 bg-white px-5 py-5">
+                  <p class="text-2xl font-semibold">Accessories<span class="font-normal">Product</span> 
+                  </p>
+                  <div class="flex justify-between items-center text-[#BCBCBC] ">
+                    <p class="text-[#BF1C18] font-semibold">accessories</p>
+                    <p class="hover:text-[#BF1C18] font-semibold">SPORTY</p>
+                  </div>
+                </div>
+
+                <!-- inside border -->
+                 <div class="flex">
+                <div class="lg:h-[350px] border border-[#BCBCBC] mx-3 lg:mr-0 py-8 flex gap-5">
+                  <div class="h-[300px] w-[100%] relative group">
+                    <img src="./assets/slot-images2/slot-earpiece.png" alt="" class="h-[65%] w-[100%]"> 
+                    <p class="addToCartAccessory">Add to Cart</p>
+                    <div class="compareItems">
+                      <i class="fa-regular fa-heart compareItemsHover"></i>
+                      <i class="fa-regular fa-eye compareItemsHover"></i>
+                      <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                    </div>
+                    <div class="grid pl-5 relative z-10 bg-white">
+                      <p class="text-sm text-blue-500 hover:text-[#BF1C18] font-semibold">SAMSUNG TYPE C AKG HANDSFREE</p>
+                      <p class="font-semibold">₦8,500.00</p> 
+                    </div>
+                  </div>
+                  
+                  <div class="h-[300px] w-[100%] relative group">
+                    <img src="./assets/slot-images2/slot-screeguard.png" alt="" class="h-[65%] w-[100%]"> 
+                    <p class="addToCartAccessory">Add to Cart</p>
+                    <div class="compareItems">
+                      <i class="fa-regular fa-heart compareItemsHover"></i>
+                      <i class="fa-regular fa-eye compareItemsHover"></i>
+                      <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                    </div>
+                    <div class="grid pl-5 relative z-10 bg-white">
+                      <p class=" text-blue-500 hover:text-[#BF1C18] font-semibold">IPHONE XR SCREEN GUARD</p>
+                      <p class="font-semibold">₦3,500.00</p> 
+                    </div>
+                  </div>
+
+                  <div class="h-[300px] w-[100%] relative group max-md:hidden">
+                    <img src="./assets/slot-images2/slot-flash-drive.png" alt="" class="h-[65%] w-[100%]"> 
+                    <p class="addToCartAccessory">Add to Cart</p>
+                    <div class="compareItems">
+                      <i class="fa-regular fa-heart compareItemsHover"></i>
+                      <i class="fa-regular fa-eye compareItemsHover"></i>
+                      <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                    </div>
+                    <div class="grid pl-5 relative z-10 bg-white">
+                      <p class=" text-blue-500 hover:text-[#BF1C18] font-semibold">Sandisk Flash Drive 32GB</p>
+                      <p class="font-semibold">₦6,500.00</p> 
+                    </div>
+                  </div>
+                  
+                  <div class="h-[300px] w-[100%] relative group max-lg:hidden">
+                    <img src="./assets/slot-images2/slot-micro-sd.png" alt="" class="h-[65%] w-[100%]"> 
+                    <p class="addToCartAccessory">Add to Cart</p>
+                    <div class="compareItems">
+                      <i class="fa-regular fa-heart compareItemsHover"></i>
+                      <i class="fa-regular fa-eye compareItemsHover"></i>
+                      <i class="fa-solid fa-layer-group compareItemsHover"></i> 
+                    </div>
+                    <div class="grid pl-5 relative z-10 bg-white">
+                      <p class=" text-blue-500 hover:text-[#BF1C18] font-semibold">Micro SD 16GB</p>
+                      <p class="font-semibold">₦6,000.00</p> 
+                    </div>
+                  </div>
+                </div>
+                <div class="h-[400px] w-[25%] relative group max-lg:hidden">
+                  <img src="./assets/slot-images2/slot-accessory.jpg" alt="" class="h-[100%] w-[100%] absolute  left-0">                     
+                </div>
+              </div>
+              </section>
+
+              <!-- Section 8 -->
+               <section class="bg-white py-5 max-w-full relative">
+                <div class="slider flex flex-nowrap overflow-x-auto items-center justify-start mb-5 no-scrollbar">
+
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/infinix.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/huawei.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/nokia.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/oppo.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/samsung.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/tecno.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/vivo.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/XIAOMI.png" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/itel.jpg" alt="" class="h-full">
+                  </div>
+                  <div class="logoSlider">
+                    <img src="./assets/slot-images-3/VIVO-logo.jpg" alt="" class="h-full">
+                  </div>
+                </div>
+
+                  <!-- Control Buttons -->
+                <div class="text-center cursor-pointer text-xl text-black w-full opacity-100 absolute top-[40%]">
+                   
+                  <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full slide-left absolute left-0"></span>
+                    
+                    <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full slide-right absolute right-0"></span>
+                </div>
+                
+                <div class="flex gap-3 items-center justify-center px-5">
+                  
+                  <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full"></span>
+                  <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full"></span>
+                  <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full"></span>
+                  <span class="h-[10px] w-[10px] border bg-[#79787E]  rounded-full"></span>
+                </div>
+               </section>
+       </main>
+
+       <div class="h-14 bg-white lg:mx-24"></div>
+
+       <!-- Footer Section -->
+       <footer class="bg-[#232C35] py-14  text-center">
+          <p class="text-3xl text-white mb-10 font-semibold">Sign Up For Newsletter</p>
+          <p class="text-[#79787E]">Get the latest and greatest offers from us by subscribing to our newsletter</p>
+          <p class="text-[#BB0000] hover:text-white mb-12">Join 1,000,000+ Subscribers.</p>
+
+          <div class="flex justify-center items-center mb-5">
+          <input type="text" placeholder="Your Email Adress...." class="bg-white py-4 px-5 rounded-l-full">
+          <button class="bg-[#BB0000] text-white py-4 px-5 rounded-r-full">Subscribe !</button>
+        </div>
+
+        <div class="lg:flex lg:px-20">
+          <div class="lg:w-[35%]">
+        <img src="./assets/slot-images1/slot-logo-red.png" alt="" class="h-[80px] mb-14 px-5">
+
+        <p class="text-[#79787E] text-start mb-7 px-5">SLOT Systems Limited is the leading retail company for affordable and durable mobile phones, computers, accessories, and various types of Electronics. We consider it necessary to fill up this need in the global information technology sector with emphasis on Africa market.</p>
+
+        <p class="text-[#79787E] mb-8 text-start px-5">For Corporate purchase Email: corporatesales@slot.ng</p>
+
+          <div class="flex items-center justify-start gap-2 px-5">
+            <img src="./assets/slot-images1/footer-headphone.png" alt="" class="h-[70px]">
+            <div class="">
+              <p class="text-[#79787E] font-medium">Hotline Free 24/7:</p>
+              <p class="text-xl text-white">07005000050</p>
+            </div>
+          </div>
+     
+ 
+            <p class="text-start text-[#79787E] mb-9 px-5">Add: 84 Obafemi Awolowo way, Ikeja, Lagos</p>
+          </div>
+
+          <div class="lg:flex gap-5 lg:w-[65%]">
+        <div class="flex lg:flex-col flex-none max-lg:justify-between items-start text-sm text-white mb-5 px-5">
+           <p class="font-medium uppercase lg:mb-12 text-[16px]">Information</p>
+          <p class="md:hidden font-bold">+</p>
+          <p class="footerInfo mb-3">F.A.Q.'s</p>
+          <p class="footerInfo mb-3">Order History</p>
+          <p class="footerInfo">Contact Us</p>
+        </div>  
+
+        <div class="flex lg:flex-col max-lg:justify-between items-start text-sm text-white mb-5 px-5">
+          <p class="font-medium uppercase lg:mb-12 text-[16px]">Our Services</p>
+          <p class="md:hidden font-bold">+</p>
+          <p class="footerInfo mb-3">Trade In</p>
+          <p class="footerInfo mb-3">About Us</p>
+          <p class="footerInfo mb-3">How To Pay</p>     
+        </div>  
+
+        <div class="flex lg:flex-col max-lg:justify-between items-start lg:bg-red-300 text-sm text-white mb-5 px-5">
+          <p class="font-medium uppercase lg:mb-12 text-[16px]">My Account</p>
+          <p class="md:hidden font-bold">+</p>
+          <p class="footerInfo mb-3">Your Account</p>
+          <p class="footerInfo mb-3">Warranty Policy</p>
+          <p class="footerInfo mb-3">Privacy Policy</p>
+          <p class="footerInfo mb-3">Privacy and Cookie Policy</p>
+        </div> 
+
+        <div class="flex lg:flex-col justify-between items-start text-sm text-white mb-5 px-5">
+          <p class="font-medium uppercase lg:mb-12 text-[16px]">Follow us on</p>
+          <p class="md:hidden font-bold">+</p>
+         
+        </div> 
+      </div>
+      </div> 
+
+        <!-- Second Part -->
+         <div class="bg-slate-950 py-8 px-14">
+          <p class="text-[#79787E] mb-3">Copyright © <a href="#" class="text-[#BB0000]">Slot Systems Limited</a> 2024 All Rights Reserved.</p>
+
+       
+
+          <div class="flex items-center ml-10">
+            <img src="./assets/slot-images1/iso_1.jpg" alt="" class="h-[35px]">
+            <img src="./assets/slot-images1/visa-card.png" alt="" class="h-[30px]">
+             
+          </div>
+         </div>
+       </footer>
+
+    <script src="./scripts/slot.js"></script> 
+    <script src="./scripts/slot2.js"></script>
+</body>
+</html>
